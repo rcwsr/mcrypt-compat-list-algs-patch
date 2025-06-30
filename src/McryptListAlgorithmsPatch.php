@@ -48,6 +48,33 @@ class McryptListAlgorithmsPatch implements PackageFacadeInterface
             new FileFilter('**/vendor/phpseclib/phpseclib/phpseclib/Crypt/Base.php'),
         );
 
+        self::$codeShift->shift(
+            new FunctionHookShiftSpec(
+                'mcrypt_generic',
+                fn(callable $original) => static fn($td, $data) => self::$installed ? phpseclib_mcrypt_generic($td, $data) : $original($td, $data)
+            ),
+            new FileFilter('**/vendor/phpseclib/phpseclib/phpseclib/Crypt/Base.php'),
+        );
+
+        self::$codeShift->shift(
+            new FunctionHookShiftSpec(
+                'mcrypt_generic_init',
+                fn(callable $original) => static fn($td, $key, $iv) => self::$installed ? phpseclib_mcrypt_generic_init($td, $key, $iv) : $original($td, $key, $iv)
+            ),
+            new FileFilter('**/vendor/phpseclib/phpseclib/phpseclib/Crypt/Base.php'),
+        );
+
+        self::$codeShift->shift(
+            new FunctionHookShiftSpec(
+                'mcrypt_module_open',
+                fn(callable $original) => static fn($algorithm, $algorithm_directory, $mode, $mode_directory) => self::$installed
+                    ? phpseclib_mcrypt_module_open($algorithm, $algorithm_directory, $mode, $mode_directory)
+                    : $original($algorithm, $algorithm_directory, $mode, $mode_directory
+                )
+            ),
+            new FileFilter('**/vendor/phpseclib/phpseclib/phpseclib/Crypt/Base.php'),
+        );
+
         self::$installed = true;
     }
 

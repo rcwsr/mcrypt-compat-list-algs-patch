@@ -1,0 +1,31 @@
+{
+  "name": "cwsr/mcrypt-compat-list-algs-patch",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Cwsr\\McryptPatch\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Cwsr\\McryptPatch\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "asmblah/php-code-shift": "^0.1",
+    "nytris/nytris": "^0.1",
+    "phpseclib/mcrypt_compat": "^1.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpunit": "^10.2"
+  },
+  "config": {
+    "platform": {
+      "php": "8.1"
+    },
+    "sort-packages": true
+  }
+}

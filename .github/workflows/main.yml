@@ -1,0 +1,44 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [8.1, 8.2, 8.3, 8.4]
+
+    steps:
+      # Check out the repository under $GITHUB_WORKSPACE, so this job can access it.
+      - uses: actions/checkout@v2
+
+      - name: Use PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: 'mcrypt'
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+  phpstan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse -c phpstan.neon.dist

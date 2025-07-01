@@ -1,5 +1,5 @@
 Copyright 2025 Robin Cawser
-https://github.com/rcwsr/mcrypt-compat-list-algs-patch
+https://github.com/rcwsr/mcrypt-compat-speed-patch
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

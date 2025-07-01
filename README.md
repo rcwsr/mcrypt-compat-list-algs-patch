@@ -1,4 +1,4 @@
-# mcrypt-compat-list-algs-patch for phpseclib & mcrypt_compat
+# mcrypt-compat-speed-patch for phpseclib & mcrypt_compat
 
 For the rare case that you are using the mcrypt extension at the same time as having phpseclib's mcrypt_compat v1 installed.
 
@@ -25,7 +25,7 @@ Configure [Nytris platform](https://github.com/nytris/nytris) to use this packag
 
 declare(strict_types=1);
 
-use Cwsr\McryptPatch\McryptListAlgorithmsPatchPackage;
+use Cwsr\McryptPatch\McryptCompatSpeedPatchPackage;
 use Nytris\Boot\BootConfig;
 use Nytris\Boot\PlatformConfig;
 
@@ -33,7 +33,7 @@ $bootConfig = new BootConfig(new PlatformConfig(__DIR__ . '/var/cache/nytris'));
 
 // ...
 
-$bootConfig->installPackage(new McryptListAlgorithmsPatchPackage());
+$bootConfig->installPackage(new McryptCompatSpeedPatchPackage());
 
 // ...
 

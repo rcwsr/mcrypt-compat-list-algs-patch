@@ -1,5 +1,5 @@
 {
-  "name": "cwsr/mcrypt-compat-list-algs-patch",
+  "name": "cwsr/mcrypt-compat-speed-patch",
   "type": "project",
   "license": "MIT",
   "autoload": {

@@ -11,7 +11,7 @@ See this issue for more details on this issue https://github.com/phpseclib/mcryp
 Install this package with Composer as a Nytris package:
 
 ```shell
-$ composer install cwsr/mcrypt-list-algorithms-patch
+$ composer require cwsr/mcrypt-compat-speed-patch
 ```
 
 ### Configuring platform boot config
